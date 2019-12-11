@@ -4,8 +4,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/daohoangson/go-sitemirror/cacher"
-	"github.com/daohoangson/go-sitemirror/engine"
+	"github.com/chrisfarms/go-sitemirror/cacher"
+	"github.com/chrisfarms/go-sitemirror/engine"
 )
 
 func main() {

@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/daohoangson/go-sitemirror/cacher"
+	"github.com/chrisfarms/go-sitemirror/cacher"
 	"github.com/namsral/flag"
 )
 

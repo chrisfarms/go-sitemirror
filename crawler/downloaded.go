@@ -7,7 +7,7 @@ import (
 	neturl "net/url"
 	"strings"
 
-	"github.com/daohoangson/go-sitemirror/cacher"
+	"github.com/chrisfarms/go-sitemirror/cacher"
 )
 
 var (

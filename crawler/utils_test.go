@@ -3,7 +3,7 @@ package crawler_test
 import (
 	neturl "net/url"
 
-	. "github.com/daohoangson/go-sitemirror/crawler"
+	. "github.com/chrisfarms/go-sitemirror/crawler"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/daohoangson/go-sitemirror/crawler"
-	t "github.com/daohoangson/go-sitemirror/testing"
+	. "github.com/chrisfarms/go-sitemirror/crawler"
+	t "github.com/chrisfarms/go-sitemirror/testing"
 	"github.com/tevino/abool"
 	"gopkg.in/jarcoal/httpmock.v1"
 

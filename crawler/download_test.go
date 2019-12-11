@@ -8,9 +8,9 @@ import (
 
 	"gopkg.in/jarcoal/httpmock.v1"
 
-	"github.com/daohoangson/go-sitemirror/cacher"
-	. "github.com/daohoangson/go-sitemirror/crawler"
-	t "github.com/daohoangson/go-sitemirror/testing"
+	"github.com/chrisfarms/go-sitemirror/cacher"
+	. "github.com/chrisfarms/go-sitemirror/crawler"
+	t "github.com/chrisfarms/go-sitemirror/testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

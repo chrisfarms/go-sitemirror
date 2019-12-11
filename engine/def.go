@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/daohoangson/go-sitemirror/cacher"
-	"github.com/daohoangson/go-sitemirror/crawler"
-	"github.com/daohoangson/go-sitemirror/web"
+	"github.com/chrisfarms/go-sitemirror/cacher"
+	"github.com/chrisfarms/go-sitemirror/crawler"
+	"github.com/chrisfarms/go-sitemirror/web"
 )
 
 // Engine represents an object that can mirror urls

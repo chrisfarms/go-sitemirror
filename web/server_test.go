@@ -9,9 +9,9 @@ import (
 	"sort"
 	"time"
 
-	"github.com/daohoangson/go-sitemirror/cacher"
-	t "github.com/daohoangson/go-sitemirror/testing"
-	. "github.com/daohoangson/go-sitemirror/web"
+	"github.com/chrisfarms/go-sitemirror/cacher"
+	t "github.com/chrisfarms/go-sitemirror/testing"
+	. "github.com/chrisfarms/go-sitemirror/web"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
