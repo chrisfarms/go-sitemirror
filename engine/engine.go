@@ -75,6 +75,9 @@ func (e *engine) init(fs cacher.Fs, httpClient *http.Client, logger *logrus.Logg
 	})
 
 	e.crawler.SetOnURLShouldDownload(func(u *neturl.URL) bool {
+		if e.crawler.GetNoProxy() {
+			return false
+		}
 		if e.cacher.CheckCacheExists(u) {
 			e.logger.WithField("url", u).Debug("Cache exists for url")
 			return false

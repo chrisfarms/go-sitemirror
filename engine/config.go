@@ -41,6 +41,7 @@ type configCacher struct {
 type configCrawler struct {
 	AutoDownloadDepth configUint64
 	NoCrossHost       bool
+	NoProxy           bool
 	RequestHeader     configHTTPHeader
 	WorkerCount       configUint64
 }
@@ -70,6 +71,8 @@ const (
 	ConfigDefaultCrawlerAutoDownloadDepth = uint64(1)
 	// ConfigDefaultCrawlerNoCrossHost default value for .Crawler.NoCrossHost
 	ConfigDefaultCrawlerNoCrossHost = false
+	// ConfigDefaultCrawlerNoProxy default value for .Crawler.NoProxy
+	ConfigDefaultCrawlerNoProxy = false
 	// ConfigDefaultCrawlerWorkerCount default value for .Crawler.WorkerCount
 	ConfigDefaultCrawlerWorkerCount = uint64(4)
 	// ConfigDefaultPort default value for .Port
@@ -99,6 +102,7 @@ func ParseConfig(arg0 string, otherArgs []string, output io.Writer) (*Config, er
 	fs.Var(&config.Crawler.AutoDownloadDepth, "auto-download-depth", "Maximum link depth for auto downloads, default=1")
 	//noinspection GoBoolExpressions
 	fs.BoolVar(&config.Crawler.NoCrossHost, "no-cross-host", ConfigDefaultCrawlerNoCrossHost, "Disable cross-host links")
+	fs.BoolVar(&config.Crawler.NoProxy, "no-proxy", ConfigDefaultCrawlerNoProxy, "Disable proxy to upstream only serve auto-download content")
 	fs.Var(&config.Crawler.RequestHeader, "header", "Custom request header, must be 'key=value'")
 	config.Crawler.WorkerCount = configUint64(ConfigDefaultCrawlerWorkerCount)
 	fs.Var(&config.Crawler.WorkerCount, "workers", "Number of download workers")
@@ -155,6 +159,7 @@ func FromConfig(fs cacher.Fs, config *Config) Engine {
 		crawler := e.GetCrawler()
 		crawler.SetAutoDownloadDepth(uint64(config.Crawler.AutoDownloadDepth))
 		crawler.SetNoCrossHost(config.Crawler.NoCrossHost)
+		crawler.SetNoProxy(config.Crawler.NoProxy)
 
 		if config.Crawler.RequestHeader != nil {
 			requestHeader := http.Header(config.Crawler.RequestHeader)

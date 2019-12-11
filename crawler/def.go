@@ -5,8 +5,9 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/Sirupsen/logrus"
 	"time"
+
+	"github.com/Sirupsen/logrus"
 )
 
 // Crawler represents an object that can process download requests
@@ -18,6 +19,8 @@ type Crawler interface {
 	GetAutoDownloadDepth() uint64
 	SetNoCrossHost(bool)
 	GetNoCrossHost() bool
+	SetNoProxy(bool)
+	GetNoProxy() bool
 	AddRequestHeader(string, string)
 	SetRequestHeader(string, string)
 	GetRequestHeaderValues(string) []string

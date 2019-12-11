@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/hectane/go-nonblockingchan"
+	nbc "github.com/hectane/go-nonblockingchan"
 	"github.com/tevino/abool"
 )
 
@@ -23,6 +23,7 @@ type crawler struct {
 
 	autoDownloadDepth uint64
 	noCrossHost       *abool.AtomicBool
+	noProxy           *abool.AtomicBool
 	requestHeader     http.Header
 	workerCount       uint64
 
@@ -109,6 +110,20 @@ func (c *crawler) SetNoCrossHost(value bool) {
 
 func (c *crawler) GetNoCrossHost() bool {
 	return c.noCrossHost.IsSet()
+}
+
+func (c *crawler) SetNoProxy(value bool) {
+	old := c.noProxy.IsSet()
+	c.noProxy.SetTo(value)
+
+	c.logger.WithFields(logrus.Fields{
+		"old": old,
+		"new": value,
+	}).Info("Updated crawler no not proxy to upstream (only serve from cache)")
+}
+
+func (c *crawler) GetNoProxy() bool {
+	return c.noProxy.IsSet()
 }
 
 func (c *crawler) AddRequestHeader(key string, value string) {
