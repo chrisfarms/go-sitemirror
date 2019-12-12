@@ -3,9 +3,9 @@ package engine_test
 import (
 	"net/url"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
-	. "github.com/chrisfarms/go-sitemirror/engine"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
+	. "github.com/alphagov/spotlight-gel/engine"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

@@ -10,9 +10,9 @@ import (
 	"gopkg.in/jarcoal/httpmock.v1"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	. "github.com/chrisfarms/go-sitemirror/engine"
-	t "github.com/chrisfarms/go-sitemirror/testing"
+	"github.com/alphagov/spotlight-gel/cacher"
+	. "github.com/alphagov/spotlight-gel/engine"
+	t "github.com/alphagov/spotlight-gel/testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

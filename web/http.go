@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
-	"github.com/chrisfarms/go-sitemirror/web/internal"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
+	"github.com/alphagov/spotlight-gel/web/internal"
 )
 
 var (

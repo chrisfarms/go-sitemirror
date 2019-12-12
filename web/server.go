@@ -13,8 +13,8 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/web/internal"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/web/internal"
 )
 
 type server struct {
@@ -257,6 +257,13 @@ func (s *server) serveURL(url *url.URL, si internal.ServeInfo, req *http.Request
 	if si.HasError() {
 		return s.serveServerIssue(&ServerIssue{
 			Type: CacheError,
+			URL:  url,
+			Info: si,
+		})
+	}
+	if si.GetStatusCode() == 0 {
+		return s.serveServerIssue(&ServerIssue{
+			Type: CacheNotFound,
 			URL:  url,
 			Info: si,
 		})

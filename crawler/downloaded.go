@@ -7,7 +7,7 @@ import (
 	neturl "net/url"
 	"strings"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
+	"github.com/alphagov/spotlight-gel/cacher"
 )
 
 var (

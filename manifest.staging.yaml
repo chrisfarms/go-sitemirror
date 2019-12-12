@@ -1,0 +1,12 @@
+---
+applications:
+- name: performance-platform-spotlight-gel-staging
+  buildpack: go_buildpack
+  memory: 256M
+  stack: cflinuxfs3
+  routes:
+  - route: "performance-platform-spotlight-staging.cloudapps.digital"
+  disk_quota: 4G
+  command: "spotlight-gel -mirror http://performance-platform-spotlight-staging.apps.internal:8080/performance -whitelist performance-platform-spotlight-staging.apps.internal:8080 -mirror-port 8080 -no-cross-host -auto-download-depth 3 -workers 8 -cache-ttl 5000h -log 5 -auto-refresh 4h -no-proxy -cache-path /home/vcap/app"
+  env:
+    GOPACKAGENAME: github.com/alphagov/spotlight-gel

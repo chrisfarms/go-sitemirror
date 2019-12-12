@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	. "github.com/chrisfarms/go-sitemirror/cacher"
+	. "github.com/alphagov/spotlight-gel/cacher"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

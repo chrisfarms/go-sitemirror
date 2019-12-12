@@ -66,10 +66,11 @@ func (c *crawler) init(client *http.Client, logger *logrus.Logger) {
 
 	c.autoDownloadDepth = 1
 	c.noCrossHost = abool.New()
+	c.noProxy = abool.New()
 	c.requestHeader = make(http.Header)
 	c.workerCount = 4
 
-	userAgent := fmt.Sprintf("go-sitemirror/%s (Googlebot wannabe)", version)
+	userAgent := fmt.Sprintf("spotlight-gel/%s (Googlebot wannabe)", version)
 	c.requestHeader.Add("User-Agent", userAgent)
 	logger.WithFields(logrus.Fields{
 		"clientTimeout": client.Timeout,
@@ -119,7 +120,7 @@ func (c *crawler) SetNoProxy(value bool) {
 	c.logger.WithFields(logrus.Fields{
 		"old": old,
 		"new": value,
-	}).Info("Updated crawler no not proxy to upstream (only serve from cache)")
+	}).Info("Updated crawler no only serve from cache")
 }
 
 func (c *crawler) GetNoProxy() bool {

@@ -10,10 +10,10 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
-	. "github.com/chrisfarms/go-sitemirror/web"
-	"github.com/chrisfarms/go-sitemirror/web/internal"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
+	. "github.com/alphagov/spotlight-gel/web"
+	"github.com/alphagov/spotlight-gel/web/internal"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

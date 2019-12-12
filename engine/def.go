@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
-	"github.com/chrisfarms/go-sitemirror/web"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
+	"github.com/alphagov/spotlight-gel/web"
 )
 
 // Engine represents an object that can mirror urls
@@ -33,6 +33,6 @@ type Engine interface {
 }
 
 var (
-	// ResponseBodyMethodNotAllowed the text to respond when user request method is not allowed
 	ResponseBodyMethodNotAllowed = "Sorry, your request is not supported and cannot be processed."
+	ResponseBad                  = "Sorry, cache miss"
 )

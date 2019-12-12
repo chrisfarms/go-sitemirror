@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/chrisfarms/go-sitemirror/crawler"
-	t "github.com/chrisfarms/go-sitemirror/testing"
+	. "github.com/alphagov/spotlight-gel/crawler"
+	t "github.com/alphagov/spotlight-gel/testing"
 	"github.com/tevino/abool"
 	"gopkg.in/jarcoal/httpmock.v1"
 
@@ -115,7 +115,7 @@ var _ = Describe("Crawler", func() {
 			defer c.Stop()
 
 			downloaded, _ := c.Downloaded()
-			Expect(downloaded.Body).To(HavePrefix("go-sitemirror"))
+			Expect(downloaded.Body).To(HavePrefix("spotlight-gel"))
 		})
 
 		It("should download with header", func() {

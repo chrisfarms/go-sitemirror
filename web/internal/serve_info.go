@@ -169,6 +169,9 @@ func (si *serveInfo) writeHeader() {
 				responseWriterHeader.Add(key, value)
 			}
 		}
+		if si.statusCode == 0 {
+			si.statusCode = 500
+		}
 
 		si.responseWriter.WriteHeader(si.statusCode)
 	}

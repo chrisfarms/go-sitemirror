@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/chrisfarms/go-sitemirror/cacher"
+	"github.com/alphagov/spotlight-gel/cacher"
 	"github.com/namsral/flag"
 )
 
@@ -121,6 +121,9 @@ func ParseConfig(arg0 string, otherArgs []string, output io.Writer) (*Config, er
 func FromConfig(fs cacher.Fs, config *Config) Engine {
 	httpClient := &http.Client{
 		Timeout: config.HttpTimeout,
+	}
+	if config.Crawler.NoProxy {
+		httpClient = nil
 	}
 
 	logger := logrus.New()

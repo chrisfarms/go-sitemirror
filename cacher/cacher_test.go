@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"time"
 
-	. "github.com/chrisfarms/go-sitemirror/cacher"
-	t "github.com/chrisfarms/go-sitemirror/testing"
+	. "github.com/alphagov/spotlight-gel/cacher"
+	t "github.com/alphagov/spotlight-gel/testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

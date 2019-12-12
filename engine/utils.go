@@ -3,8 +3,8 @@ package engine
 import (
 	"net/http"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
 )
 
 // BuildCacherInputFromCrawlerDownloaded returns a cacher.Input with data copied from the specified crawler.Downloaded

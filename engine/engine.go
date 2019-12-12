@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
-	"github.com/chrisfarms/go-sitemirror/web"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
+	"github.com/alphagov/spotlight-gel/web"
 	"github.com/tevino/abool"
 )
 
@@ -63,6 +63,10 @@ func (e *engine) init(fs cacher.Fs, httpClient *http.Client, logger *logrus.Logg
 	})
 
 	e.crawler.SetOnURLShouldQueue(func(u *neturl.URL) bool {
+		if e.crawler.GetNoProxy() {
+			e.logger.WithField("url", u).Debug("Ignoring queuing")
+			return false
+		}
 		if !e.checkHostWhitelisted(u.Host) {
 			e.logger.WithFields(logrus.Fields{
 				"host": u.Host,
@@ -76,6 +80,7 @@ func (e *engine) init(fs cacher.Fs, httpClient *http.Client, logger *logrus.Logg
 
 	e.crawler.SetOnURLShouldDownload(func(u *neturl.URL) bool {
 		if e.crawler.GetNoProxy() {
+			e.logger.WithField("url", u).Debug("Cache miss and proxy disabled so will not download")
 			return false
 		}
 		if e.cacher.CheckCacheExists(u) {
@@ -118,6 +123,10 @@ func (e *engine) init(fs cacher.Fs, httpClient *http.Client, logger *logrus.Logg
 		web.ServeDownloaded(downloaded, issue.Info)
 	}
 	e.server.SetOnServerIssue(func(issue *web.ServerIssue) {
+		if e.GetCrawler().GetNoProxy() {
+			issue.Info.WriteBody([]byte(ResponseBad))
+			return
+		}
 		switch issue.Type {
 		case web.MethodNotAllowed:
 			issue.Info.WriteBody([]byte(ResponseBodyMethodNotAllowed))
@@ -284,20 +293,23 @@ func (e *engine) Mirror(url *neturl.URL, port int) error {
 		return nil
 	}
 
-	_, err := e.server.ListenAndServe(root, port)
+	if e.GetCrawler().GetNoProxy() {
+		_, err := e.server.ListenAndServe(root, port)
 
-	loggerContext := e.logger.WithFields(logrus.Fields{
-		"url":  url,
-		"port": port,
-		"root": root,
-	})
-	if err != nil {
-		loggerContext.Error("Mirror cannot be setup")
-	} else {
-		loggerContext.Info("Mirror is up")
+		loggerContext := e.logger.WithFields(logrus.Fields{
+			"url":  url,
+			"port": port,
+			"root": root,
+		})
+		if err != nil {
+			loggerContext.Error("Mirror cannot be setup")
+		} else {
+			loggerContext.Info("Mirror is up")
+		}
+
+		return err
 	}
-
-	return err
+	return nil
 }
 
 func (e *engine) Stop() {

@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	"github.com/chrisfarms/go-sitemirror/crawler"
-	. "github.com/chrisfarms/go-sitemirror/engine"
-	t "github.com/chrisfarms/go-sitemirror/testing"
+	"github.com/alphagov/spotlight-gel/cacher"
+	"github.com/alphagov/spotlight-gel/crawler"
+	. "github.com/alphagov/spotlight-gel/engine"
+	t "github.com/alphagov/spotlight-gel/testing"
 	"gopkg.in/jarcoal/httpmock.v1"
 
 	. "github.com/onsi/ginkgo"

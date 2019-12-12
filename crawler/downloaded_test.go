@@ -5,9 +5,9 @@ import (
 	"sort"
 	"time"
 
-	"github.com/chrisfarms/go-sitemirror/cacher"
-	. "github.com/chrisfarms/go-sitemirror/crawler"
-	t "github.com/chrisfarms/go-sitemirror/testing"
+	"github.com/alphagov/spotlight-gel/cacher"
+	. "github.com/alphagov/spotlight-gel/crawler"
+	t "github.com/alphagov/spotlight-gel/testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

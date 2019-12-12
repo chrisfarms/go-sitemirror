@@ -10,7 +10,7 @@ import (
 	"sync"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/chrisfarms/go-sitemirror/cacher"
+	"github.com/alphagov/spotlight-gel/cacher"
 )
 
 type fakeFs struct {
